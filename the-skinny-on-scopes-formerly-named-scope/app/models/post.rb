@@ -11,6 +11,8 @@ class Post < ActiveRecord::Base
   scope :published, lambda { 
     where(["posts.published_at IS NOT NULL AND posts.published_at <= ?", Time.zone.now])
   }
+  
+  scope :recent, order("posts.published_at DESC")
   scope :popular, order("posts.views_count DESC")
   scope :unpublished, where("posts.published_at IS NULL")
   
@@ -23,6 +25,3 @@ class Post < ActiveRecord::Base
     end
   end
 end
-
-# Show create/new/build on scope
-# Show using class method to build named scope
