@@ -1,0 +1,10 @@
+# development:
+#   adapter: mysql
+#   database: rails3app
+#   username: root
+#   password:
+#   host: localhost
+  
+development:
+  adapter: sqlite3
+  database: db/development.sqlite3
