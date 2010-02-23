@@ -5,7 +5,6 @@ class User < ActiveRecord::Base
   
   validates_presence_of :username
   
-  # TODO: How to reuse published logic on far side (Post)
   scope :published, lambda {
     joins("join posts on posts.author_id = users.id").
     where(Post.published.where_values).
