@@ -27,7 +27,7 @@ class Post < ActiveRecord::Base
     # Start with an empty scope and build on it for each attr
     def search(q)
       [:title, :body].inject(scoped) do |combined_scope, attr|
-        combined_scope.where("posts.#{attr} LIKE ?", "%#{sanitize_sql(q)}%")
+        combined_scope.where("posts.#{attr} LIKE ?", "%#{q}%")
       end
     end
   end
