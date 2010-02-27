@@ -5,11 +5,6 @@ class User < ActiveRecord::Base
   
   validates_presence_of :username
   
-  scope :published, lambda {
-    joins(:posts).
-    where(Post.published.where_values).
-    group("users.id")
-  }
-  
+  scope :published, lambda { joins(:posts).group("users.id") & Post.published }  
   scope :commented, joins(:comments).group("users.id")
 end
